@@ -28,6 +28,14 @@ export default class Header extends Component {
     return <p>Sorry, we couldn't find that season!</p>;
   };
 
+  viewEpisodes = () => {
+    window.scrollTo({
+      top: 800,
+      left: 0,
+      behavior: 'smooth'
+    });
+  };
+
   render() {
     const { season } = this.props;
 

@@ -51,7 +51,11 @@ describe('Header.js', () => {
 
       wrapper.instance().viewEpisodes();
 
-      expect(mockScroll).toBeCalledWith(800);
+      expect(mockScroll).toBeCalledWith({
+        top: 800,
+        left: 0,
+        behavior: 'smooth'
+      });
     });
   });
 });
