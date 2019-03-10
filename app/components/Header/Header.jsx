@@ -6,7 +6,7 @@ import config from '../../config/config.json';
 
 import styles from './Header.scss';
 
-export default class App extends Component {
+export default class Header extends Component {
   static propTypes = {
     season: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
