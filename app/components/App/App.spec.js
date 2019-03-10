@@ -140,7 +140,7 @@ describe('App.js', () => {
       );
 
       wrapper.instance().toggleHeaderImage();
-      expect(wrapper.state().headerImage).toBe(undefined);
+      expect(wrapper.state().headerImage).toBe('');
     });
   });
 });
