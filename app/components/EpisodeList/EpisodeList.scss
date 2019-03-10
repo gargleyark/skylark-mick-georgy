@@ -1,0 +1,11 @@
+@import '../../variables.scss';
+
+.episodeList {
+  display: block;
+  height: 400px;
+
+  @media only screen and (min-width: $tabletLandscape) {
+    display: inline-block;
+    width: 400px;
+  }
+}
