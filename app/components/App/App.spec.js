@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import axios from 'axios';
 
 jest.mock('axios');
+axios.get.mockImplementation(() => Promise.resolve());
 
 import App from './App';
 
@@ -10,15 +11,11 @@ describe('App.js', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(<App />);
+    jest.clearAllMocks();
   });
 
   it('should render with static text', () => {
     expect(wrapper.text()).toEqual('app rendered :tada:');
-  });
-
-  it('should initialise with an empty state of shows and in loading state', () => {
-    expect(wrapper.state().shows).toEqual([]);
-    expect(wrapper.state().loading).toEqual(true);
   });
 
   it('should call getSeason when the component mounts', () => {
@@ -35,19 +32,19 @@ describe('App.js', () => {
       wrapper.instance().getSeason();
       expect(spy).toHaveBeenCalled();
     });
+  });
 
-    it('should set the state with the axios response', () => {
-      axios.get.mockImplementation(() => Promise.resolve('test'));
-
-      wrapper.instance().getSeason();
-      expect(wrapper.state().season).toEqual('test');
+  describe('updateSeason', () => {
+    it('should pass a correct API response into the season state property', () => {
+      wrapper.instance().updateSeason({ data: 'test', status: 200 });
+      expect(wrapper.state().season).toBe('test');
     });
+  });
 
-    it('should set the state to error when the API fails', () => {
-      axios.get.mockImplementation(() => Promise.reject());
-
-      wrapper.instance().getSeason();
-      expect(wrapper.state().error).toEqual(true);
+  describe('setErrorState', () => {
+    it('should set the state to error', () => {
+      wrapper.instance().setErrorState();
+      expect(wrapper.state().error).toBe(true);
     });
   });
 });
