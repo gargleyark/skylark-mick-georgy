@@ -101,6 +101,12 @@ export default class App extends Component {
       selectedEpisode: (viewType === 'episode' && selectedEpisode) || undefined
     });
 
+  toggleHeaderImage = (headerImage = '') => {
+    this.setState({
+      headerImage
+    });
+  };
+
   render() {
     const { loading, season, error, seasonImage, seasonEpisodes } = this.state;
 
