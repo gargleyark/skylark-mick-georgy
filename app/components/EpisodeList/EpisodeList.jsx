@@ -5,15 +5,17 @@ import styles from './EpisodeList.scss';
 
 export default class EpisodeList extends Component {
   static propTypes = {
-    episodes: PropTypes.array
+    episodes: PropTypes.array,
+    toggleHeaderImage: PropTypes.func
   };
 
   static defaultProps = {
-    episodes: []
+    episodes: [],
+    toggleHeaderImage: () => {}
   };
 
   render() {
-    const { episodes } = this.props;
+    const { episodes, toggleHeaderImage } = this.props;
 
     return (
       <article className={styles.episodeList}>
