@@ -7,6 +7,10 @@ export default class App extends Component {
     super(props);
   }
 
+  state = {
+    shows: []
+  };
+
   componentDidMount() {}
 
   render() {

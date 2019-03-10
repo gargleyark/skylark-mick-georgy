@@ -37,6 +37,7 @@
     "webpack-dev-server": "^2.5.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.23.0",
     "classnames": "^2.2.5",
     "history": "^4.6.3",
