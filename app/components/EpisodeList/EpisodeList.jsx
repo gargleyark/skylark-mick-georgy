@@ -16,7 +16,7 @@ export default class EpisodeList extends Component {
     const { episodes } = this.props;
 
     return (
-      <article>
+      <article className={styles.episodeList}>
         {episodes.map(episode => (
           <section>
             <h3>{episode.title}</h3>

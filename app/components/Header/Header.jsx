@@ -32,12 +32,12 @@ export default class Header extends Component {
     const { season } = this.props;
 
     return (
-      <section id="header">
+      <article id="header">
         <header className={`${styles.header}`}>
           <h1>{season.title || 'Skylark'}</h1>
           {this.getMessage()}
         </header>
-      </section>
+      </article>
     );
   }
 }
