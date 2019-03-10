@@ -20,7 +20,11 @@ export default class EpisodeList extends Component {
     return (
       <article className={styles.episodeList}>
         {episodes.map(episode => (
-          <section key={episode.title}>
+          <section
+            key={episode.title}
+            onMouseEnter={toggleHeaderImage(episode.image.url)}
+            onMouseLeave={toggleHeaderImage()}
+          >
             <div>
               <h3>{episode.title}</h3>
               <p>{episode.synopsis}</p>
