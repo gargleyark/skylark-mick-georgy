@@ -18,7 +18,7 @@ export default class SeasonImage extends Component {
     return (
       <section
         className={`${styles.seasonImage}`}
-        style={`background-image: url(${image})`}
+        style={{ backgroundImage: `url(${image})` }}
       />
     );
   }
