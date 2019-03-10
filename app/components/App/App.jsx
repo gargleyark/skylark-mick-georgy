@@ -13,7 +13,8 @@ export default class App extends Component {
     seasonImage: '',
     seasonEpisodes: [],
     error: false,
-    loading: true
+    loading: true,
+    viewType: 'overview'
   };
 
   componentDidMount() {

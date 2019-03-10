@@ -102,14 +102,17 @@ describe('App.js', () => {
 
   describe('toggleView', () => {
     it('should allow a user to toggle between overview and episode view', () => {
-      wrapper.instance().toggleView('episode');
+      wrapper.instance().toggleView('episode', { id: 1 });
       expect(wrapper.state().viewType).toBe('episode');
+      expect(wrapper.state().selectedEpisode).toEqual({ id: 1 });
 
       wrapper.instance().toggleView('overview');
       expect(wrapper.state().viewType).toBe('overview');
+      expect(wrapper.state().selectedEpisode).toEqual(undefined);
 
       wrapper.instance().toggleView();
       expect(wrapper.state().viewType).toBe('overview');
+      expect(wrapper.state().selectedEpisode).toEqual(undefined);
     });
   });
 });
