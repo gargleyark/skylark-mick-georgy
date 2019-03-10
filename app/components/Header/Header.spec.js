@@ -39,4 +39,19 @@ describe('Header.js', () => {
       "Sorry, we couldn't find that season!"
     );
   });
+
+  describe('viewEpisodes', () => {
+    it('should scroll to show the episodes', () => {
+      const wrapper = shallow(
+        <Header loading={false} season={{}} error={true} />
+      );
+
+      const mockScroll = jest.fn();
+      global.scrollTo = mockScroll;
+
+      wrapper.instance().viewEpisodes();
+
+      expect(mockScroll).toBeCalledWith(800);
+    });
+  });
 });
