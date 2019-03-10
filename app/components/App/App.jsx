@@ -4,6 +4,7 @@ import axios from 'axios';
 import config from '../../config/config.json';
 import Header from '../Header/Header';
 import SeasonImage from '../SeasonImage/SeasonImage';
+import EpisodeList from '../EpisodeList/EpisodeList';
 
 import styles from './App.scss';
 import { EOPNOTSUPP } from 'constants';
@@ -90,13 +91,13 @@ export default class App extends Component {
     });
 
   render() {
-    const { loading, season, error, seasonImage } = this.state;
+    const { loading, season, error, seasonImage, seasonEpisodes } = this.state;
 
     return (
       <div className={styles.App}>
         <Header loading={loading} season={season} error={error} />
         {(seasonImage && <SeasonImage image={seasonImage} />) || ''}
-        {/* TODO put episode list here*/}
+        {seasonEpisodes.length && <EpisodeList episodes={EpisodeList} />}
       </div>
     );
   }

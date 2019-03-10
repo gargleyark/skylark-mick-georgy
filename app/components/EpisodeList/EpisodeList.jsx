@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './SeasonImage.scss';
+import styles from './EpisodeList.scss';
 
-export default class SeasonImage extends Component {
+export default class EpisodeList extends Component {
   static propTypes = {
     episodes: PropTypes.array
   };
