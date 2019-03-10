@@ -82,6 +82,12 @@ export default class App extends Component {
     }
   };
 
+  toggleView = (viewType = 'overview', selectedEpisode) =>
+    this.setState({
+      viewType,
+      selectedEpisode: (viewType === 'episode' && selectedEpisode) || undefined
+    });
+
   render() {
     const { loading, season, error } = this.state;
 
