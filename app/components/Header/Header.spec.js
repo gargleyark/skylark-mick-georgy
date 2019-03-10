@@ -42,12 +42,16 @@ describe('Header.js', () => {
 
   describe('viewEpisodes', () => {
     it('should scroll to show the episodes', () => {
-      const wrapper = shallow(
-        <Header loading={false} season={{}} error={true} />
-      );
-
       const mockScroll = jest.fn();
       global.scrollTo = mockScroll;
+
+      const wrapper = shallow(
+        <Header
+          loading={false}
+          season={{ title: 'Cooking with Jeff', items: ['episode uno'] }}
+          error={false}
+        />
+      );
 
       wrapper.instance().viewEpisodes();
 

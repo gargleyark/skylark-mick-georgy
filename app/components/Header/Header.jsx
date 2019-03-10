@@ -22,7 +22,11 @@ export default class Header extends Component {
     }
 
     if (season.items && season.items.length) {
-      return <a className={styles.button}>View season</a>;
+      return (
+        <a className={styles.button} onClick={this.viewEpisodes}>
+          View season
+        </a>
+      );
     }
 
     return <p>Sorry, we couldn't find that season!</p>;
