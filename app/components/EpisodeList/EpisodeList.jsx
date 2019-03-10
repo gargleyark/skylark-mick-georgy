@@ -15,6 +15,15 @@ export default class SeasonImage extends Component {
   render() {
     const { episodes } = this.props;
 
-    return <section />;
+    return (
+      <article>
+        {episodes.map(episode => (
+          <section>
+            <h3>{episode.title}</h3>
+            <p>{episode.synopsis}</p>
+          </section>
+        ))}
+      </article>
+    );
   }
 }

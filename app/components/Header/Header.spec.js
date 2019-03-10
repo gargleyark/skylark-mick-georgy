@@ -1,9 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import axios from 'axios';
-
-jest.mock('axios');
-axios.get.mockImplementation(() => Promise.resolve());
 
 import Header from './Header';
 
