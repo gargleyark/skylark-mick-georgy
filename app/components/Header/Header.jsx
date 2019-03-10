@@ -7,7 +7,12 @@ export default class Header extends Component {
   static propTypes = {
     season: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
-    error: PropTypes.bool.isRequired
+    error: PropTypes.bool.isRequired,
+    headerImage: PropTypes.string
+  };
+
+  static defaultProps = {
+    headerImage: ''
   };
 
   getMessage = () => {
@@ -41,11 +46,21 @@ export default class Header extends Component {
   };
 
   render() {
-    const { season } = this.props;
+    const { season, headerImage } = this.props;
 
     return (
       <article id="header">
-        <header className={`${styles.header}`}>
+        <header
+          className={`${styles.header}`}
+          style={
+            headerImage
+              ? {
+                  backgroundImage: `url(${headerImage})`,
+                  backgroundPositionY: '0px'
+                }
+              : {}
+          }
+        >
           <h1>{season.title || 'Skylark'}</h1>
           {this.getMessage()}
         </header>

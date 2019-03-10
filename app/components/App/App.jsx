@@ -108,11 +108,23 @@ export default class App extends Component {
   };
 
   render() {
-    const { loading, season, error, seasonImage, seasonEpisodes } = this.state;
+    const {
+      loading,
+      season,
+      error,
+      seasonImage,
+      seasonEpisodes,
+      headerImage
+    } = this.state;
 
     return (
       <div className={styles.App}>
-        <Header loading={loading} season={season} error={error} />
+        <Header
+          loading={loading}
+          season={season}
+          error={error}
+          headerImage={headerImage}
+        />
         {(seasonImage && <SeasonImage image={seasonImage} />) || ''}
         {seasonEpisodes.length && (
           <EpisodeList
