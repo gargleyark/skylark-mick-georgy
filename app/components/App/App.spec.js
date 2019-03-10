@@ -129,4 +129,18 @@ describe('App.js', () => {
       expect(wrapper.state().selectedEpisode).toEqual(undefined);
     });
   });
+
+  describe('toggleHeaderImage', () => {
+    it('should set a header image if passed one', () => {
+      wrapper
+        .instance()
+        .toggleHeaderImage('www.bing.nl/dutch-dogs-on-skateboards');
+      expect(wrapper.state().headerImage).toBe(
+        'www.bing.nl/dutch-dogs-on-skateboards'
+      );
+
+      wrapper.instance().toggleHeaderImage();
+      expect(wrapper.state().headerImage).toBe(undefined);
+    });
+  });
 });
