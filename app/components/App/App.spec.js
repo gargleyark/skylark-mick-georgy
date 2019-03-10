@@ -3,10 +3,13 @@ import { shallow } from 'enzyme';
 import axios from 'axios';
 import config from '../../config/config.json';
 import Header from '../Header/Header';
+import SeasonImage from '../SeasonImage/SeasonImage';
+import EpisodeList from '../EpisodeList/EpisodeList';
 
 jest.mock('axios');
 jest.mock('../Header/Header', () => 'header');
 jest.mock('../SeasonImage/SeasonImage', () => 'seasonImage');
+jest.mock('../EpisodeList/EpisodeList', () => 'episodeList');
 axios.get.mockImplementation(() => Promise.resolve());
 
 import App from './App';
@@ -23,8 +26,13 @@ describe('App.js', () => {
   });
 
   it('should render with a div called .App containing a seasonImage when one exists', () => {
-    wrapper.state().seasonImage = 'google.com/free-hats';
-    expect(wrapper.find('div.App header').length).toBe(1);
+    wrapper.instance().setState({ seasonImage: 'google.com/free-hats' });
+    expect(wrapper.find('div.App seasonImage').length).toBe(1);
+  });
+
+  it('should render with a div called .App containing a episodeList when there are episodes', () => {
+    wrapper.instance().setState({ seasonEpisodes: [{}, {}, {}] });
+    expect(wrapper.find('div.App episodeList').length).toBe(1);
   });
 
   it('should call getSeason when the component mounts', () => {
