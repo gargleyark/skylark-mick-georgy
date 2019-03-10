@@ -99,4 +99,17 @@ describe('App.js', () => {
       ]);
     });
   });
+
+  describe('toggleView', () => {
+    it('should allow a user to toggle between overview and episode view', () => {
+      wrapper.instance().toggleView('episode');
+      expect(wrapper.state().viewType).toBe('episode');
+
+      wrapper.instance().toggleView('overview');
+      expect(wrapper.state().viewType).toBe('overview');
+
+      wrapper.instance().toggleView();
+      expect(wrapper.state().viewType).toBe('overview');
+    });
+  });
 });
