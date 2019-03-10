@@ -1,11 +1,8 @@
-import _ from 'lodash';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 import './index.global.scss';
 
-const component = () => {
-  const element = document.createElement('div');
-  element.innerHTML = 'OstChallenge';
+import App from './components/App/App';
 
-  return element;
-}
-
-document.body.appendChild(component());
+ReactDOM.render(<App />, document.getElementById('app'));

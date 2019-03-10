@@ -34,17 +34,17 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
-    modules: [
-      path.resolve(`${paths.base}`),
-      path.resolve('node_modules/')
-    ]
+    modules: [path.resolve(`${paths.base}`), path.resolve('node_modules/')]
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        loaders: ['babel-loader'],
+        loader: 'babel-loader',
+        query: {
+          presets: ['react']
+        },
         include: paths.base
       },
       {
