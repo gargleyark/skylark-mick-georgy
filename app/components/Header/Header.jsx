@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
-
-import config from '../../config/config.json';
 
 import styles from './Header.scss';
 

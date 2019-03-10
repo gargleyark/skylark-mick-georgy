@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import styles from './SeasonImage.scss';
 
 export default class SeasonImage extends Component {
-  static propTypes = {};
+  static propTypes = {
+    image: PropTypes.string
+  };
 
-  static defaultProps = {};
+  static defaultProps = {
+    image: ''
+  };
 
   render() {
-    return <div />;
+    const { image } = this.props;
+
+    return (
+      <section
+        className={`${styles.seasonImage}`}
+        styles={`background-image: url(${image})`}
+      />
+    );
   }
 }
