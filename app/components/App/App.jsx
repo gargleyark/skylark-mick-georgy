@@ -75,7 +75,18 @@ export default class App extends Component {
       .filter(response => response.status === 200)
       .map(response => response.data);
 
-    this.updateSeasonEpisodes(seasonEpisodes);
+    const episodeImages = await Promise.all(
+      seasonEpisodes.map(episode =>
+        axios.get(`${config.apiURL}${episode.image_urls[0]}`)
+      )
+    );
+
+    const episodesWithImages = episodeImages.map((image, i) => ({
+      image: image.data,
+      ...seasonEpisodes[i]
+    }));
+
+    this.updateSeasonEpisodes(episodesWithImages);
   };
 
   updateSeasonEpisodes = seasonEpisodes => {
