@@ -18,16 +18,18 @@ describe('Header.js', () => {
     );
   });
 
-  it('should render a season name and view button when passed a season', () => {
+  it('should render a season name, view button, and header image when passed', () => {
     const wrapper = shallow(
       <Header
         loading={false}
         season={{ title: 'Cooking with Jeff', items: ['episode uno'] }}
         error={false}
+        headerImage="jeff.png"
       />
     );
     expect(wrapper.find('h1').text()).toEqual('Cooking with Jeff');
     expect(wrapper.find('a').text()).toEqual('View season');
+    expect(wrapper.html()).toContain('jeff.png');
   });
 
   it('should render an error message when there is an error', () => {
