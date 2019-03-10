@@ -37,13 +37,13 @@ describe('EpisodeList.js', () => {
       .at(1)
       .simulate('mouseleave');
 
-    expect(mockToggleHeaderImage).toBeCalledWith('bye.svg');
+    expect(mockToggleHeaderImage).toBeCalledWith();
 
     wrapper
       .find('section')
       .at(1)
-      .simulate('mouseover');
+      .simulate('mouseenter');
 
-    expect(mockToggleHeaderImage).toBeCalledWith();
+    expect(mockToggleHeaderImage).toBeCalledWith('bye.svg');
   });
 });

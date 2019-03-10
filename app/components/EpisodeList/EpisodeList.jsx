@@ -22,8 +22,8 @@ export default class EpisodeList extends Component {
         {episodes.map(episode => (
           <section
             key={episode.title}
-            onMouseEnter={toggleHeaderImage(episode.image.url)}
-            onMouseLeave={toggleHeaderImage()}
+            onMouseEnter={() => toggleHeaderImage(episode.image.url)}
+            onMouseLeave={() => toggleHeaderImage()}
           >
             <div>
               <h3>{episode.title}</h3>
