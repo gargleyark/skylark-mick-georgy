@@ -19,8 +19,10 @@ export default class EpisodeList extends Component {
       <article className={styles.episodeList}>
         {episodes.map(episode => (
           <section key={episode.title}>
-            <h3>{episode.title}</h3>
-            <p>{episode.synopsis}</p>
+            <div>
+              <h3>{episode.title}</h3>
+              <p>{episode.synopsis}</p>
+            </div>
           </section>
         ))}
       </article>

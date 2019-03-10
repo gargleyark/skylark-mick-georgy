@@ -1,11 +1,69 @@
 @import '../../variables.scss';
 
 .episodeList {
-  display: block;
+  display: flex;
   height: 400px;
+  flex-direction: column;
 
   @media only screen and (min-width: $tabletLandscape) {
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: column;
     width: 400px;
+    vertical-align: top;
+  }
+
+  @media only screen and (min-width: $desktop) {
+    width: 800px;
+    flex-wrap: wrap;
+  }
+
+  > section {
+    padding: 10px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: row;
+
+    @media only screen and (min-width: $tabletLandscape) {
+      padding: 30px 20px 0px;
+    }
+
+    &:before {
+      content: '';
+      min-width: 50px;
+      height: 50px;
+      background-image: url('https://image.flaticon.com/icons/png/512/131/131258.png');
+      background-size: 100%;
+      border-radius: 25px;
+      background-color: white;
+      transition: background-color 0.3s;
+      background-repeat: no-repeat;
+    }
+
+    &:hover {
+      opacity: 0.5;
+
+      &:before {
+        background-color: orange;
+      }
+    }
+
+    div {
+      padding: 0px 15px;
+
+      @media only screen and (min-width: $tabletLandscape) {
+        width: 280px;
+      }
+    }
+
+    h3 {
+      font-size: 20px;
+      color: orange;
+    }
+
+    p {
+      color: #333;
+    }
   }
 }
