@@ -12,7 +12,7 @@ const paths = {
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
-  entry: './app/index.js',
+  entry: ['@babel/polyfill', './app/index.js'],
   output: {
     path: paths.dist,
     publicPath: '/',

@@ -5,11 +5,13 @@ import config from '../../config/config.json';
 import Header from '../Header/Header';
 
 import styles from './App.scss';
+import { EOPNOTSUPP } from 'constants';
 
 export default class App extends Component {
   state = {
     season: {},
     seasonImage: '',
+    seasonEpisodes: [],
     error: false,
     loading: true
   };
@@ -20,7 +22,9 @@ export default class App extends Component {
 
   getSeason = () => {
     axios
-      .get(config.apiURL)
+      .get(
+        `${config.apiURL}/api/seasons/seas_e85496eb48df4225b9d9f3fde1010398/`
+      )
       .then(this.updateSeason)
       .catch(this.setErrorState);
   };
@@ -30,25 +34,50 @@ export default class App extends Component {
   };
 
   updateSeason = season => {
-    if (!season || !season.data || season.status !== 200) {
-      this.setErrorState();
+    if (season && season.data) {
+      this.setState({ season: season.data, loading: false }, () => {
+        this.getSeasonImage();
+        this.getSeasonEpisodes();
+      });
     } else {
-      this.setState({ season: season.data, loading: false });
+      this.setErrorState();
     }
   };
 
   getSeasonImage = () => {
     const { image_urls } = this.state.season;
 
-    axios
-      .get(image_urls[0])
-      .then(this.updateSeasonImage)
-      .catch(this.setErrorState);
+    if (image_urls) {
+      axios
+        .get(`${config.apiURL}${image_urls[0]}`)
+        .then(this.updateSeasonImage)
+        .catch(this.setErrorState);
+    }
   };
 
-  updateSeasonImage = data => {
-    if (data && data.url) {
-      this.setState({ seasonImage: data.url });
+  updateSeasonImage = response => {
+    if (response && response.data && response.data.url) {
+      this.setState({ seasonImage: response.data.url });
+    }
+  };
+
+  getSeasonEpisodes = async () => {
+    const { items } = this.state.season;
+
+    const episodeResponses = await Promise.all(
+      items.map(item => axios.get(`${config.apiURL}${item}`))
+    );
+
+    const seasonEpisodes = episodeResponses
+      .filter(response => response.status === 200)
+      .map(response => response.data);
+
+    this.updateSeasonEpisodes(seasonEpisodes);
+  };
+
+  updateSeasonEpisodes = seasonEpisodes => {
+    if (seasonEpisodes.length) {
+      this.setState({ seasonEpisodes });
     }
   };
 
