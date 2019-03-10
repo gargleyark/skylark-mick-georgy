@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .button {
   display: block;
   background: #fff;
@@ -12,11 +14,11 @@
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   margin: auto;
   cursor: pointer;
-}
 
-.button:hover {
-  background: orange;
-  color: #fff;
+  &:hover {
+    background: orange;
+    color: #fff;
+  }
 }
 
 .header {
@@ -27,6 +29,12 @@
   background-position-y: -200px;
   transition: background-position-y 0.3s;
   border-bottom: 1px solid #fff;
+  height: 202px;
+
+  @media only screen and (min-width: $tabletLandscape) {
+    padding: 50px 0px;
+    height: auto;
+  }
 
   h1 {
     font-family: 'Josefin Sans', sans-serif;
@@ -51,5 +59,9 @@
 
   a {
     margin-top: 20px;
+
+    @media only screen and (min-width: $tabletLandscape) {
+      display: none;
+    }
   }
 }

@@ -1,7 +1,22 @@
 @import '~normalize.css/normalize.css';
 @import '~reset-css/reset.css';
+@import './variables.scss';
 
 body {
   font-family: 'Ubuntu', sans-serif;
-  background: #333;
+  background: #fff;
+  transition: width 0.3s;
+
+  @media only screen and (min-width: $tabletPortrait) {
+    width: 600px;
+    margin: auto;
+  }
+
+  @media only screen and (min-width: $tabletLandscape) {
+    width: 800px;
+  }
+
+  @media only screen and (min-width: $desktop) {
+    width: 1200px;
+  }
 }
