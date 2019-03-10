@@ -8,7 +8,7 @@ export default class App extends Component {
   }
 
   state = {
-    shows: []
+    season: {}
   };
 
   componentDidMount() {}
