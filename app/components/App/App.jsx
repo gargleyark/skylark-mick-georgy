@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import config from '../../config/config.json';
 import Header from '../Header/Header';
+import SeasonImage from '../SeasonImage/SeasonImage';
 
 import styles from './App.scss';
 import { EOPNOTSUPP } from 'constants';
@@ -89,12 +90,12 @@ export default class App extends Component {
     });
 
   render() {
-    const { loading, season, error } = this.state;
+    const { loading, season, error, seasonImage } = this.state;
 
     return (
       <div className={styles.App}>
         <Header loading={loading} season={season} error={error} />
-        {/* TODO put image component here*/}
+        {(seasonImage && <SeasonImage image={seasonImage} />) || ''}
         {/* TODO put episode list here*/}
       </div>
     );

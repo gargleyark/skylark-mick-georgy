@@ -6,6 +6,7 @@ import Header from '../Header/Header';
 
 jest.mock('axios');
 jest.mock('../Header/Header', () => 'header');
+jest.mock('../SeasonImage/SeasonImage', () => 'seasonImage');
 axios.get.mockImplementation(() => Promise.resolve());
 
 import App from './App';
@@ -18,6 +19,11 @@ describe('App.js', () => {
   });
 
   it('should render with a div called .App containing a header', () => {
+    expect(wrapper.find('div.App header').length).toBe(1);
+  });
+
+  it('should render with a div called .App containing a seasonImage when one exists', () => {
+    wrapper.state().seasonImage = 'google.com/free-hats';
     expect(wrapper.find('div.App header').length).toBe(1);
   });
 
