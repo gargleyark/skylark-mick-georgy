@@ -97,7 +97,7 @@ export default class App extends Component {
       <div className={styles.App}>
         <Header loading={loading} season={season} error={error} />
         {(seasonImage && <SeasonImage image={seasonImage} />) || ''}
-        {seasonEpisodes.length && <EpisodeList episodes={EpisodeList} />}
+        {seasonEpisodes.length && <EpisodeList episodes={seasonEpisodes} />}
       </div>
     );
   }
