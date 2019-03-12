@@ -11,11 +11,7 @@
     "!app/**/*.spec.jsx"
   ],
   "coverageDirectory": "test-reports/unit-test-reports/coverage",
-  "coverageReporters": [
-    "cobertura",
-    "lcov",
-    "text"
-  ],
+  "coverageReporters": ["cobertura", "lcov", "text"],
   "coverageThreshold": {
     "global": {
       "branches": 80,
@@ -27,13 +23,8 @@
   "moduleNameMapper": {
     ".*\\.scss$": "identity-obj-proxy"
   },
-  "moduleDirectories": [
-    "node_modules"
-  ],
-  "modulePaths": [
-    "<rootDir>/app/",
-    "<rootDir>/app/lib/"
-  ],
+  "moduleDirectories": ["node_modules"],
+  "modulePaths": ["<rootDir>/app/", "<rootDir>/app/lib/"],
   "setupFiles": [
     "raf/polyfill",
     "<rootDir>/node_modules/babel-polyfill/",
