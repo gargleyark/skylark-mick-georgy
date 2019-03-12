@@ -1,15 +1,8 @@
 {
   "verbose": true,
   "bail": false,
-  "collectCoverageFrom": [
-    "app/**/*.{js,jsx}",
-    "!**/node_modules/**",
-    "!app/**/*.fixtures.js",
-    "!dist/**",
-    "!app/vendor.js",
-    "!app/**/*.spec.js",
-    "!app/**/*.spec.jsx"
-  ],
+  "collectCoverageFrom": ["app/**/*.{js,jsx}"],
+  "collectCoverage": true,
   "coverageDirectory": "test-reports/unit-test-reports/coverage",
   "coverageReporters": ["cobertura", "lcov", "text"],
   "coverageThreshold": {

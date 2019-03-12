@@ -131,7 +131,7 @@ export default class App extends Component {
             episodes={seasonEpisodes}
             toggleHeaderImage={this.toggleHeaderImage}
           />
-        )}
+        ) || ''}
       </div>
     );
   }
