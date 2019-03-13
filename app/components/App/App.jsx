@@ -38,7 +38,7 @@ export default class App extends Component {
 
   updateSeason = season => {
     if (season && season.data) {
-      this.setState({ season: season.data, loading: false }, () => {
+      this.setState({ season: season.data }, () => {
         this.getSeasonImage();
         this.getSeasonEpisodes();
       });
@@ -91,7 +91,7 @@ export default class App extends Component {
 
   updateSeasonEpisodes = seasonEpisodes => {
     if (seasonEpisodes.length) {
-      this.setState({ seasonEpisodes });
+      this.setState({ seasonEpisodes, loading: false });
     }
   };
 
@@ -125,13 +125,16 @@ export default class App extends Component {
           error={error}
           headerImage={headerImage}
         />
-        {(seasonImage && <SeasonImage image={seasonImage} />) || ''}
-        {seasonEpisodes.length && (
-          <EpisodeList
-            episodes={seasonEpisodes}
-            toggleHeaderImage={this.toggleHeaderImage}
-          />
-        ) || ''}
+        {loading && <span className={styles.loading} />}
+        {(!loading && seasonImage && <SeasonImage image={seasonImage} />) || ''}
+        {(!loading &&
+          seasonEpisodes.length && (
+            <EpisodeList
+              episodes={seasonEpisodes}
+              toggleHeaderImage={this.toggleHeaderImage}
+            />
+          )) ||
+          ''}
       </div>
     );
   }

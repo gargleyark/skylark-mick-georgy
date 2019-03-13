@@ -1,2 +1,25 @@
 .App {
+  .loading {
+    animation-name: loading;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 6000ms;
+    display: block;
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    background-image: url(http://pluspng.com/img-png/loader-png-22-jan-2015-23-46-3161-loader-6-png-22-jan-2015-23-46-3087-loader-7-png-22-jan-2015-23-46-3177-loader-8-png-22-jan-2015-23-46-3582-loader-9-png-504.png);
+    margin-top: 30px;
+    background-size: 100%;
+  }
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -35,6 +35,16 @@ describe('App.js', () => {
     expect(wrapper.find('div.App episodeList').length).toBe(1);
   });
 
+  it('should render with a div called .App containing a span.loading when loading', () => {
+    wrapper.instance().setState({ loading: true });
+    expect(wrapper.find('div.App span.loading').length).toBe(1);
+  });
+
+  it('should render with a div called .App containing without a span.loading when not loading', () => {
+    wrapper.instance().setState({ loading: false });
+    expect(wrapper.find('div.App span.loading').length).toBe(0);
+  });
+
   it('should call getSeason when the component mounts', () => {
     const spy = jest.spyOn(wrapper.instance(), 'getSeason');
 
@@ -111,6 +121,7 @@ describe('App.js', () => {
       expect(wrapper.state().seasonEpisodes).toEqual([
         'www.google.com/really-cool-hat'
       ]);
+      expect(wrapper.state().loading).toEqual(false);
     });
   });
 
